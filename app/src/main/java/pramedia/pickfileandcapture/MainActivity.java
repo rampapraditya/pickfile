@@ -85,6 +85,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (result.getResultCode() == RESULT_OK) {
                     scanFile(photoFile.getAbsolutePath());
                     image.setImageURI(photoUri);
+
+                    String filePath = fu.getFilePathFromUri(MainActivity.this, photoUri);
+                    String fileName = fu.getFileNameFromUri(MainActivity.this, photoUri);
+
+                    namaFile.setText(String.format("Nama File : %s", fileName));
+                    pathFile.setText(String.format("Path File : %s", filePath));
+
                     Toast.makeText(this, "Gambar disimpan di: " + photoUri.getPath(), Toast.LENGTH_LONG).show();
                 } else {
                     Toast.makeText(this, "Gagal mengambil gambar", Toast.LENGTH_SHORT).show();
